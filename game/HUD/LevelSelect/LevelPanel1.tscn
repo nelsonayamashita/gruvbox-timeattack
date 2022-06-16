@@ -1,0 +1,232 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://HUD/LevelSelect/LevelBox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Sprites/buttons/Level002/level002_normal.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/buttons/Level003/level003_pressed.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/buttons/Level002/level002_hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/buttons/Level003/level003_locked.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/buttons/level005/level005_hover.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Sprites/buttons/Level003/level003_normal.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Sprites/buttons/level005/level005_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/buttons/Level003/level003_hover.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/buttons/Level002/level002_pressed.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/buttons/Level002/level002_locked.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/buttons/Level004/level004_normal.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/buttons/Level004/level004_locked.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/buttons/Level004/level004_pressed.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Sprites/buttons/level005/level005_locked.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sprites/buttons/Level004/level004_hover.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Sprites/buttons/level005/level005_normal.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Sprites/buttons/level006/level006_normal.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Sprites/buttons/Level010/level10_lock.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Sprites/buttons/Level011/level011_hover.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Sprites/buttons/level006/level006_hover.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Sprites/buttons/level007/level007_hover.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Sprites/buttons/Level009/level009_hover.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Sprites/buttons/level006/level006_locked.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Sprites/buttons/level007/level007_pressed.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Sprites/buttons/Level009/level009_normal.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Sprites/buttons/Level010/level010_hover.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Sprites/buttons/Level009/level009_lock.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Sprites/buttons/Level008/level008_lock.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Sprites/buttons/Level010/level010_normal.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Sprites/buttons/Level010/level10_pressed.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Sprites/buttons/level007/level007_locked.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Sprites/buttons/Level008/level008_normal.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Sprites/buttons/Level011/level011_lock.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Sprites/buttons/level006/level006_pressed.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Sprites/buttons/Level011/level011_pressed.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Sprites/buttons/Level008/level008_pressed.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Sprites/buttons/level007/level007_normal.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Sprites/buttons/Level008/level008_hover.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Sprites/buttons/Level009/level009_pressed.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Sprites/buttons/Level011/level011_normal.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Sprites/buttons/Level000/level000_pressed.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Sprites/buttons/Level000/level000_hover.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Sprites/buttons/Level000/level000_normal.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Sprites/buttons/Level000/level000_lock.png" type="Texture" id=45]
+
+[node name="LevelPanel1" type="GridContainer"]
+margin_right = 282.0
+margin_bottom = 70.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 4
+
+[node name="Level000" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 113.0
+margin_bottom = 132.0
+level = 0
+
+[node name="TextureButton" parent="Level000" index="2"]
+texture_normal = ExtResource( 44 )
+texture_pressed = ExtResource( 42 )
+texture_hover = ExtResource( 43 )
+texture_disabled = ExtResource( 45 )
+
+[node name="Level001" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 118.0
+margin_right = 231.0
+margin_bottom = 132.0
+
+[node name="Level002" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_right = 349.0
+margin_bottom = 132.0
+level = 2
+
+[node name="TextureButton" parent="Level002" index="2"]
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 11 )
+
+[node name="Level003" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_right = 467.0
+margin_bottom = 132.0
+level = 3
+
+[node name="TextureButton" parent="Level003" index="2"]
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 5 )
+
+[node name="Level004" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 137.0
+margin_right = 113.0
+margin_bottom = 269.0
+level = 4
+
+[node name="TextureButton" parent="Level004" index="2"]
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 16 )
+texture_disabled = ExtResource( 13 )
+
+[node name="Level005" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 118.0
+margin_top = 137.0
+margin_right = 231.0
+margin_bottom = 269.0
+level = 5
+
+[node name="TextureButton" parent="Level005" index="2"]
+texture_normal = ExtResource( 17 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 6 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Level006" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_top = 137.0
+margin_right = 349.0
+margin_bottom = 269.0
+level = 6
+
+[node name="TextureButton" parent="Level006" index="2"]
+texture_normal = ExtResource( 18 )
+texture_pressed = ExtResource( 35 )
+texture_hover = ExtResource( 21 )
+texture_disabled = ExtResource( 24 )
+
+[node name="Level007" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_top = 137.0
+margin_right = 467.0
+margin_bottom = 269.0
+level = 7
+
+[node name="TextureButton" parent="Level007" index="2"]
+texture_normal = ExtResource( 38 )
+texture_pressed = ExtResource( 25 )
+texture_hover = ExtResource( 22 )
+texture_disabled = ExtResource( 32 )
+
+[node name="Level008" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 274.0
+margin_right = 113.0
+margin_bottom = 406.0
+level = 8
+
+[node name="TextureButton" parent="Level008" index="2"]
+texture_normal = ExtResource( 33 )
+texture_pressed = ExtResource( 37 )
+texture_hover = ExtResource( 39 )
+texture_disabled = ExtResource( 29 )
+
+[node name="Level009" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 118.0
+margin_top = 274.0
+margin_right = 231.0
+margin_bottom = 406.0
+level = 9
+
+[node name="TextureButton" parent="Level009" index="2"]
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 40 )
+texture_hover = ExtResource( 23 )
+texture_disabled = ExtResource( 28 )
+
+[node name="Level010" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_top = 274.0
+margin_right = 349.0
+margin_bottom = 406.0
+level = 10
+
+[node name="TextureButton" parent="Level010" index="2"]
+texture_normal = ExtResource( 30 )
+texture_pressed = ExtResource( 31 )
+texture_hover = ExtResource( 27 )
+texture_disabled = ExtResource( 19 )
+
+[node name="Level011" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_top = 274.0
+margin_right = 467.0
+margin_bottom = 406.0
+level = 11
+
+[node name="TextureButton" parent="Level011" index="2"]
+texture_normal = ExtResource( 41 )
+texture_pressed = ExtResource( 36 )
+texture_hover = ExtResource( 20 )
+texture_disabled = ExtResource( 34 )
+
+[editable path="Level000"]
+[editable path="Level002"]
+[editable path="Level003"]
+[editable path="Level004"]
+[editable path="Level005"]
+[editable path="Level006"]
+[editable path="Level007"]
+[editable path="Level008"]
+[editable path="Level009"]
+[editable path="Level010"]
+[editable path="Level011"]

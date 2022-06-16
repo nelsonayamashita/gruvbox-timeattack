@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://player/AnimatedDash/AnimatedDash.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites/char_sheet.png" type="Texture" id=2]
+
+[node name="AnimatedDash" type="Sprite"]
+modulate = Color( 1.27, 1.92, 2.34, 1 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 32, 16, 16 )
+script = ExtResource( 1 )
+life_time = 0.4
+
+[node name="Tween" type="Tween" parent="."]

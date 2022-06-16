@@ -1,0 +1,389 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Assets/sfx/lose.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/Sprites/buttons/menu_normal.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/buttons/menu_hover.png" type="Texture" id=3]
+[ext_resource path="res://HUD/Lost.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Sprites/buttons/menu_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/buttons/slider.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Sprites/buttons/return_focus.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Sprites/buttons/return_hover.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sprites/buttons/slidder_deactivate.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Sprites/buttons/return_normal.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Sprites/buttons/slider_pressed.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Sprites/buttons/return_pressed.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Fonts/PeaberryMono.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://Assets/StyleBoxes/pg_bar_fg.tres" type="StyleBox" id=16]
+[ext_resource path="res://Assets/StyleBoxes/button_pressed.tres" type="StyleBox" id=17]
+[ext_resource path="res://Assets/StyleBoxes/button_normal.tres" type="StyleBox" id=18]
+[ext_resource path="res://Assets/StyleBoxes/button_hover.tres" type="StyleBox" id=19]
+[ext_resource path="res://Assets/StyleBoxes/button_focus.tres" type="StyleBox" id=20]
+[ext_resource path="res://Assets/StyleBoxes/button_disabled.tres" type="StyleBox" id=21]
+[ext_resource path="res://Assets/StyleBoxes/pg_bar_bg.tres" type="StyleBox" id=22]
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 15 )
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+vertical = true
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 15 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 1 )
+Button/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_disabled = Color( 0.788235, 0.756863, 0.729412, 1 )
+Button/colors/font_color_focus = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_hover = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_pressed = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = ExtResource( 21 )
+Button/styles/focus = ExtResource( 20 )
+Button/styles/hover = ExtResource( 19 )
+Button/styles/normal = ExtResource( 18 )
+Button/styles/pressed = ExtResource( 17 )
+HSeparator/styles/separator = SubResource( 3 )
+HSlider/icons/grabber = ExtResource( 8 )
+HSlider/icons/grabber_disabled = ExtResource( 11 )
+HSlider/icons/grabber_highlight = ExtResource( 13 )
+Label/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+ProgressBar/styles/bg = ExtResource( 22 )
+ProgressBar/styles/fg = ExtResource( 16 )
+VSeparator/styles/separator = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=16]
+size = 26
+font_data = ExtResource( 15 )
+
+[sub_resource type="StreamTexture" id=12]
+load_path = "res://.import/home_normal.png-bf7f44547b4bc97a2112c34303990e34.stex"
+
+[sub_resource type="StreamTexture" id=13]
+load_path = "res://.import/home_pressed.png-306fb2cb94fcaff767ed3e294f6ba426.stex"
+
+[sub_resource type="StreamTexture" id=14]
+load_path = "res://.import/home_hover.png-68d2ae27dd03322c5ac135c5b87bf041.stex"
+
+[sub_resource type="StreamTexture" id=15]
+load_path = "res://.import/return_focus.png-c7b855c84c2738c241ad358f399b0068.stex"
+
+[sub_resource type="InputEventAction" id=7]
+action = "restart"
+pressed = true
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="Shader" id=65]
+code = "shader_type canvas_item;
+
+
+uniform float shake_power = 0.03;
+
+uniform float shake_rate : hint_range( 0.0, 1.0 ) = 0.2;
+
+uniform float shake_speed = 5.0;
+
+uniform float shake_block_size = 30.5;
+
+uniform float shake_color_rate : hint_range( 0.0, 1.0 ) = 0.01;
+
+float random( float seed )
+{
+	return fract( 543.2543 * sin( dot( vec2( seed, seed ), vec2( 3525.46, -54.3415 ) ) ) );
+}
+
+void fragment( )
+{
+	float enable_shift = float(
+		random( trunc( TIME * shake_speed ) )
+	<	shake_rate
+	);
+
+	vec2 fixed_uv = SCREEN_UV;
+	fixed_uv.x += (
+		random(
+			( trunc( SCREEN_UV.y * shake_block_size ) / shake_block_size )
+		+	TIME
+		) - 0.5
+	) * shake_power * enable_shift;
+
+	vec4 pixel_color = textureLod( SCREEN_TEXTURE, fixed_uv, 0.0 );
+	pixel_color.r = mix(
+		pixel_color.r
+	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( shake_color_rate, 0.0 ), 0.0 ).r
+	,	enable_shift
+	);
+	pixel_color.b = mix(
+		pixel_color.b
+	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( -shake_color_rate, 0.0 ), 0.0 ).b
+	,	enable_shift
+	);
+	COLOR = pixel_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=21]
+shader = SubResource( 65 )
+shader_param/shake_power = 0.07
+shader_param/shake_rate = 1.0
+shader_param/shake_speed = 10.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id=9]
+resource_name = "Disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:material:shader_param/shake_rate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Pop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:material:shader_param/shake_rate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:material:shader_param/shake_rate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="Lost" type="Control"]
+pause_mode = 2
+visible = false
+anchor_left = 0.25
+anchor_top = 0.33
+anchor_right = 0.75
+anchor_bottom = 0.67
+theme = SubResource( 5 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 352.0
+margin_bottom = 187.0
+
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 336.0
+margin_bottom = 27.0
+custom_colors/font_color_shadow = Color( 0.984314, 0.286275, 0.203922, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = SubResource( 16 )
+text = "Level Failed!"
+align = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 31.0
+margin_right = 336.0
+margin_bottom = 47.0
+custom_constants/separation = 16
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 51.0
+margin_right = 336.0
+margin_bottom = 179.0
+size_flags_vertical = 3
+custom_constants/separation = 16
+
+[node name="HomeContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_right = 101.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ButtonsContainer/HomeContainer"]
+margin_right = 101.0
+margin_bottom = 16.0
+text = "Home"
+align = 1
+
+[node name="HomeButton" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsContainer/HomeContainer"]
+margin_top = 20.0
+margin_right = 101.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+texture_normal = SubResource( 12 )
+texture_pressed = SubResource( 13 )
+texture_hover = SubResource( 14 )
+texture_focused = SubResource( 15 )
+expand = true
+stretch_mode = 5
+
+[node name="LevelsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_left = 117.0
+margin_right = 218.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ButtonsContainer/LevelsContainer"]
+margin_right = 101.0
+margin_bottom = 16.0
+text = "Levels"
+align = 1
+
+[node name="LevelsButton" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsContainer/LevelsContainer"]
+margin_top = 20.0
+margin_right = 101.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="RetsartContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/ButtonsContainer"]
+margin_left = 234.0
+margin_right = 336.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ButtonsContainer/RetsartContainer"]
+margin_right = 102.0
+margin_bottom = 16.0
+text = "Restart"
+align = 1
+
+[node name="RestartButton" type="TextureButton" parent="MarginContainer/VBoxContainer/ButtonsContainer/RetsartContainer"]
+margin_top = 20.0
+margin_right = 102.0
+margin_bottom = 128.0
+size_flags_vertical = 3
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 14 )
+texture_hover = ExtResource( 10 )
+texture_focused = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 21 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Disappear = SubResource( 9 )
+anims/Pop = SubResource( 10 )
+anims/RESET = SubResource( 11 )
+
+[node name="LoseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "SFX"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/HomeContainer/HomeButton" to="." method="_on_HomeButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/LevelsContainer/LevelsButton" to="." method="_on_LevelsButton_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/ButtonsContainer/RetsartContainer/RestartButton" to="." method="_on_RestartButton_pressed"]

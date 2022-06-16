@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HUD/LevelSelect/LevelBox.tscn" type="PackedScene" id=1]
+
+[node name="LevelPanel1" type="GridContainer"]
+margin_right = 282.0
+margin_bottom = 70.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 4
+
+[node name="Level024" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 113.0
+margin_bottom = 132.0
+level = 24
+
+[node name="Level025" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 118.0
+margin_right = 231.0
+margin_bottom = 132.0
+level = 25
+
+[node name="Level026" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_right = 349.0
+margin_bottom = 132.0
+level = 26
+
+[node name="Level027" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_right = 467.0
+margin_bottom = 132.0
+level = 27
+
+[node name="Level028" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 137.0
+margin_right = 113.0
+margin_bottom = 269.0
+level = 28
+
+[node name="Level029" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 118.0
+margin_top = 137.0
+margin_right = 231.0
+margin_bottom = 269.0
+level = 29
+
+[node name="Level030" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 236.0
+margin_top = 137.0
+margin_right = 349.0
+margin_bottom = 269.0
+level = 30
+
+[node name="Level031" parent="." instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_top = 137.0
+margin_right = 467.0
+margin_bottom = 269.0
+level = 31
+
+[editable path="Level024"]

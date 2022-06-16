@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Sprites/tileset.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/Flyer.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/Explosion.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Run"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 2 ) ]
+}
+
+[node name="FlyerPath" type="Path2D"]
+curve = SubResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotate = false
+
+[node name="Flyer" type="Area2D" parent="PathFollow2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource( 2 )
+explosion = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="PathFollow2D/Flyer"]
+modulate = Color( 0.984314, 0.286275, 0.203922, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+hframes = 2
+region_enabled = true
+region_rect = Rect2( 0, 304, 32, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Flyer"]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/Flyer"]
+autoplay = "Run"
+anims/RESET = SubResource( 3 )
+anims/Run = SubResource( 4 )
+
+[connection signal="area_entered" from="PathFollow2D/Flyer" to="PathFollow2D/Flyer" method="_on_Flyer_area_entered"]

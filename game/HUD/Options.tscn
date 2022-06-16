@@ -1,0 +1,347 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/Themes/gruve_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/sfx/options_buttons.wav" type="AudioStream" id=2]
+[ext_resource path="res://Assets/sfx/pause.wav" type="AudioStream" id=3]
+[ext_resource path="res://Assets/Fonts/PeaberryMono.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://HUD/Options.gd" type="Script" id=5]
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 0.156863, 0.156863, 0.156863, 1 )
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="DynamicFont" id=67]
+size = 26
+font_data = ExtResource( 4 )
+
+[sub_resource type="Shader" id=72]
+code = "shader_type canvas_item;
+
+
+uniform float shake_power = 0.03;
+
+uniform float shake_rate : hint_range( 0.0, 1.0 ) = 0.2;
+
+uniform float shake_speed = 5.0;
+
+uniform float shake_block_size = 30.5;
+
+uniform float shake_color_rate : hint_range( 0.0, 1.0 ) = 0.01;
+
+float random( float seed )
+{
+	return fract( 543.2543 * sin( dot( vec2( seed, seed ), vec2( 3525.46, -54.3415 ) ) ) );
+}
+
+void fragment( )
+{
+	float enable_shift = float(
+		random( trunc( TIME * shake_speed ) )
+	<	shake_rate
+	);
+
+	vec2 fixed_uv = SCREEN_UV;
+	fixed_uv.x += (
+		random(
+			( trunc( SCREEN_UV.y * shake_block_size ) / shake_block_size )
+		+	TIME
+		) - 0.5
+	) * shake_power * enable_shift;
+
+	vec4 pixel_color = textureLod( SCREEN_TEXTURE, fixed_uv, 0.0 );
+	pixel_color.r = mix(
+		pixel_color.r
+	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( shake_color_rate, 0.0 ), 0.0 ).r
+	,	enable_shift
+	);
+	pixel_color.b = mix(
+		pixel_color.b
+	,	textureLod( SCREEN_TEXTURE, fixed_uv + vec2( -shake_color_rate, 0.0 ), 0.0 ).b
+	,	enable_shift
+	);
+	COLOR = pixel_color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id=68]
+shader = SubResource( 72 )
+shader_param/shake_power = 0.07
+shader_param/shake_rate = 1.0
+shader_param/shake_speed = 10.0
+shader_param/shake_block_size = 30.5
+shader_param/shake_color_rate = 0.01
+
+[sub_resource type="Animation" id=69]
+resource_name = "Disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/shake_rate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=70]
+resource_name = "Pop"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/shake_rate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=71]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/shake_rate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("..:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Options" type="Control"]
+pause_mode = 2
+visible = false
+anchor_left = 0.25
+anchor_top = 0.5
+anchor_right = 0.75
+anchor_bottom = 0.814
+theme = ExtResource( 1 )
+script = ExtResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 66 )
+
+[node name="Menu" type="MarginContainer" parent="."]
+anchor_right = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 8
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 8
+
+[node name="Elements" type="VBoxContainer" parent="Menu"]
+margin_left = 16.0
+margin_top = 8.0
+margin_right = 352.0
+margin_bottom = 179.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="Title" type="Label" parent="Menu/Elements"]
+margin_right = 336.0
+margin_bottom = 27.0
+custom_colors/font_color_shadow = Color( 0.839216, 0.364706, 0.054902, 1 )
+custom_constants/shadow_offset_x = 4
+custom_constants/shadow_offset_y = 4
+custom_fonts/font = SubResource( 67 )
+text = "Options"
+align = 1
+autowrap = true
+
+[node name="HSeparator" type="HSeparator" parent="Menu/Elements"]
+margin_top = 35.0
+margin_right = 336.0
+margin_bottom = 39.0
+
+[node name="MusicBoxContainer" type="HBoxContainer" parent="Menu/Elements"]
+margin_top = 47.0
+margin_right = 336.0
+margin_bottom = 63.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="Menu/Elements/MusicBoxContainer"]
+margin_right = 70.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 70, 0 )
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="Menu/Elements/MusicBoxContainer"]
+margin_left = 86.0
+margin_right = 336.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+step = 5.0
+value = -10.0
+tick_count = 11
+
+[node name="SFXBoxContainer" type="HBoxContainer" parent="Menu/Elements"]
+margin_top = 71.0
+margin_right = 336.0
+margin_bottom = 87.0
+custom_constants/separation = 16
+
+[node name="Label" type="Label" parent="Menu/Elements/SFXBoxContainer"]
+margin_right = 70.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 70, 0 )
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="Menu/Elements/SFXBoxContainer"]
+margin_left = 86.0
+margin_right = 336.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+min_value = -50.0
+max_value = 0.0
+step = 5.0
+value = -10.0
+tick_count = 11
+
+[node name="ShadderContainer" type="HBoxContainer" parent="Menu/Elements"]
+margin_top = 95.0
+margin_right = 336.0
+margin_bottom = 129.0
+
+[node name="Label" type="Label" parent="Menu/Elements/ShadderContainer"]
+margin_top = 9.0
+margin_right = 60.0
+margin_bottom = 25.0
+text = "Shader"
+
+[node name="Control" type="Control" parent="Menu/Elements/ShadderContainer"]
+margin_left = 64.0
+margin_right = 266.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="Menu/Elements/ShadderContainer"]
+margin_left = 270.0
+margin_right = 336.0
+margin_bottom = 34.0
+pressed = true
+flat = true
+
+[node name="FullscreenContainer2" type="HBoxContainer" parent="Menu/Elements"]
+margin_top = 137.0
+margin_right = 336.0
+margin_bottom = 171.0
+
+[node name="Label" type="Label" parent="Menu/Elements/FullscreenContainer2"]
+margin_top = 9.0
+margin_right = 100.0
+margin_bottom = 25.0
+text = "Fullscreen"
+
+[node name="Control" type="Control" parent="Menu/Elements/FullscreenContainer2"]
+margin_left = 104.0
+margin_right = 266.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+
+[node name="FullscreenButton" type="CheckButton" parent="Menu/Elements/FullscreenContainer2"]
+margin_left = 270.0
+margin_right = 336.0
+margin_bottom = 34.0
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 68 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ColorRect")
+anims/Disappear = SubResource( 69 )
+anims/Pop = SubResource( 70 )
+anims/RESET = SubResource( 71 )
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
+
+[node name="OptionSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "SFX"
+
+[connection signal="value_changed" from="Menu/Elements/MusicBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="Menu/Elements/SFXBoxContainer/SFXSlider" to="." method="_on_SFXSlider_value_changed"]
+[connection signal="toggled" from="Menu/Elements/ShadderContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="Menu/Elements/FullscreenContainer2/FullscreenButton" to="." method="_on_FullscreenButton_toggled"]

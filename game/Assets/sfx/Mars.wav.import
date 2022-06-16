@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Mars.wav-79191c27fbdeff7caebef564fb6ff626.sample"
+
+[deps]
+
+source_file="res://Assets/sfx/Mars.wav"
+dest_files=[ "res://.import/Mars.wav-79191c27fbdeff7caebef564fb6ff626.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

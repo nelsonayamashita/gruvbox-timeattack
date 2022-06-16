@@ -1,0 +1,220 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Enemies/Crawler.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Test.gd" type="Script" id=4]
+[ext_resource path="res://HUD/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Camera/Shake.gd" type="Script" id=6]
+[ext_resource path="res://Enemies/Shooter.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Shader" id=56]
+code = "//---CRT Shader---
+shader_type canvas_item;
+
+void fragment()
+{	
+	float PI = 3.14159;
+	
+	//You can modify the *3.0, *-3.0 for a bigger or smaller 
+	float r = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*0.0), 0.0).r;
+	float g = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*1.5), 0.0).g;
+	float b = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*-1.5), 0.0).b;
+	
+	COLOR = vec4(r, g, b, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=57]
+shader = SubResource( 56 )
+
+[node name="Test" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 368, 288 )
+current = true
+script = ExtResource( 6 )
+
+[node name="Base" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="Base"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 16, 0, -64, 0, -64, 512, 0, 512, 776, 512, 776, 0, 704, 0, 704, 480, 16, 480 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Base"]
+polygon = PoolVector2Array( -64, 512, 776, 512, 776, 0, 704, 0, 704, 480, 16, 480, 16, 0, -64, 0 )
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2( 8, 48 )
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform"]
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2( 504, 48 )
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2"]
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform2"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2( 272, 136 )
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform3"]
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform3"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Platform4" type="StaticBody2D" parent="."]
+position = Vector2( 8, 232 )
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform4"]
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform4"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 72, 104, 192, 104, 192, 128, 72, 128 )
+
+[node name="Platform5" type="StaticBody2D" parent="."]
+position = Vector2( 512, 232 )
+collision_layer = 8
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform5"]
+polygon = PoolVector2Array( 48, 104, 192, 104, 192, 248, 48, 248 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Platform5"]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+polygon = PoolVector2Array( 48, 104, 192, 104, 192, 248, 48, 248 )
+
+[node name="Ruler" type="Node2D" parent="."]
+position = Vector2( 0, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ruler"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 288, 432 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite2" type="Sprite" parent="Ruler"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 288, 400 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite3" type="Sprite" parent="Ruler"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 288, 368 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite4" type="Sprite" parent="Ruler"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 288, 336 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Crawler" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 640, 320 )
+
+[node name="Crawler2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 640, 136 )
+
+[node name="Shooter" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 144, 32 )
+rotation = 3.14159
+
+[node name="Shooter2" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 448, 280 )
+rotation = -3.14159
+
+[node name="Shooter3" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 32, 296 )
+rotation = -4.71238
+
+[node name="Shooter4" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 144, 216 )
+rotation = -6.28318
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 144, 112 )
+
+[node name="HUD" parent="." instance=ExtResource( 5 )]
+process_priority = 1
+_level_time = 1000.0
+
+[node name="Shader" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Shader"]
+material = SubResource( 57 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[connection signal="win" from="." to="HUD" method="game_win"]

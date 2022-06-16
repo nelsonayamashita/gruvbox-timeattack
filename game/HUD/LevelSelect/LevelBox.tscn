@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Themes/gruve_theme.tres" type="Theme" id=1]
+[ext_resource path="res://Assets/Sprites/buttons/focus_level.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/buttons/Level001/level001_lock.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites/buttons/Level001/level001_hover.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites/buttons/Level001/level001_pressed.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites/buttons/Level001/level001_normal.png" type="Texture" id=6]
+[ext_resource path="res://HUD/LevelSelect/LevelBox.gd" type="Script" id=7]
+
+[node name="LevelBox" type="VBoxContainer"]
+anchor_right = 0.1
+anchor_bottom = 0.125
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 113.0
+margin_bottom = 16.0
+text = "Best time:"
+align = 1
+
+[node name="TimerLabel" type="Label" parent="."]
+margin_top = 20.0
+margin_right = 113.0
+margin_bottom = 36.0
+custom_colors/font_color_shadow = Color( 0.839216, 0.364706, 0.054902, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "00:00"
+align = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_top = 40.0
+margin_right = 113.0
+margin_bottom = 132.0
+rect_min_size = Vector2( 113, 92 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 4 )
+texture_disabled = ExtResource( 3 )
+texture_focused = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

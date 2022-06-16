@@ -1,0 +1,446 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Assets/Sprites/buttons/slider.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprites/buttons/slider_pressed.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Sprites/buttons/slidder_deactivate.png" type="Texture" id=3]
+[ext_resource path="res://Assets/StyleBoxes/button_disabled.tres" type="StyleBox" id=4]
+[ext_resource path="res://Assets/StyleBoxes/button_pressed.tres" type="StyleBox" id=5]
+[ext_resource path="res://Assets/StyleBoxes/button_normal.tres" type="StyleBox" id=6]
+[ext_resource path="res://Assets/StyleBoxes/button_focus.tres" type="StyleBox" id=7]
+[ext_resource path="res://Assets/StyleBoxes/button_hover.tres" type="StyleBox" id=8]
+[ext_resource path="res://Assets/StyleBoxes/pg_bar_bg.tres" type="StyleBox" id=9]
+[ext_resource path="res://Levels/Level_default.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/StyleBoxes/pg_bar_fg.tres" type="StyleBox" id=11]
+[ext_resource path="res://Assets/Fonts/PeaberryBase.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Assets/Fonts/PeaberryMono.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://Assets/Themes/gruve_theme.tres" type="Theme" id=14]
+[ext_resource path="res://Enemies/Crawler.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Enemies/Flyer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Levels/TutorialTexts.gd" type="Script" id=17]
+
+[sub_resource type="Curve2D" id=10]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 12 )
+
+[sub_resource type="SegmentShape2D" id=11]
+b = Vector2( 128, 0 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 13 )
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0.921569, 0.858824, 0.698039, 1 )
+vertical = true
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 13 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 1 )
+Button/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_disabled = Color( 0.788235, 0.756863, 0.729412, 1 )
+Button/colors/font_color_focus = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_hover = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_pressed = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = ExtResource( 4 )
+Button/styles/focus = ExtResource( 7 )
+Button/styles/hover = ExtResource( 8 )
+Button/styles/normal = ExtResource( 6 )
+Button/styles/pressed = ExtResource( 5 )
+HSeparator/styles/separator = SubResource( 3 )
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_disabled = ExtResource( 3 )
+HSlider/icons/grabber_highlight = ExtResource( 2 )
+Label/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+ProgressBar/styles/bg = ExtResource( 9 )
+ProgressBar/styles/fg = ExtResource( 11 )
+VSeparator/styles/separator = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 12 )
+
+[sub_resource type="SegmentShape2D" id=12]
+a = Vector2( 0, 56 )
+b = Vector2( 0, -48 )
+
+[sub_resource type="Theme" id=8]
+default_font = SubResource( 1 )
+Button/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_disabled = Color( 0.788235, 0.756863, 0.729412, 1 )
+Button/colors/font_color_focus = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_hover = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/colors/font_color_pressed = Color( 0.921569, 0.858824, 0.698039, 1 )
+Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = ExtResource( 4 )
+Button/styles/focus = ExtResource( 7 )
+Button/styles/hover = ExtResource( 8 )
+Button/styles/normal = ExtResource( 6 )
+Button/styles/pressed = ExtResource( 5 )
+HSeparator/styles/separator = SubResource( 3 )
+HSlider/icons/grabber = ExtResource( 1 )
+HSlider/icons/grabber_disabled = ExtResource( 3 )
+HSlider/icons/grabber_highlight = ExtResource( 2 )
+Label/colors/font_color = Color( 0.921569, 0.858824, 0.698039, 1 )
+ProgressBar/styles/bg = ExtResource( 9 )
+ProgressBar/styles/fg = ExtResource( 11 )
+VSeparator/styles/separator = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+font_data = ExtResource( 12 )
+
+[sub_resource type="SegmentShape2D" id=13]
+a = Vector2( 96, -8 )
+b = Vector2( 0, -8 )
+
+[sub_resource type="SegmentShape2D" id=14]
+a = Vector2( 0, 64 )
+b = Vector2( 0, -64 )
+
+[sub_resource type="Animation" id=15]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shoot:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bullet:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Dash:percent_visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Win:percent_visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Air:percent_visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "t1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shoot:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+resource_name = "t3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bullet:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "t3"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Dash:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "t4"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Win:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "t5"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Air:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[node name="Level000" instance=ExtResource( 10 )]
+
+[node name="Decoration" parent="." index="1"]
+tile_data = PoolIntArray( 65551, 20, 0, 131087, 20, 0, 196614, 15, 0, 196617, 16, 0, 196623, 20, 0, 262159, 23, 0, 262160, 19, 0, 327696, 20, 0, 393232, 20, 0, 458768, 20, 0, 524295, 17, 0, 524296, 18, 0, 524299, 18, 0, 524300, 18, 0, 524301, 18, 0, 524303, 18, 0, 524304, 21, 0, 524305, 18, 0, 524307, 19, 0, 589825, 18, 0, 589826, 18, 0, 589827, 18, 0, 589828, 18, 0, 589830, 18, 0, 589831, 24, 0, 589840, 20, 0, 589843, 20, 0, 655379, 22, 0, 720909, 17, 0, 720910, 18, 0, 720911, 18, 0, 720912, 24, 0, 720915, 23, 0, 720916, 18, 0, 720917, 18, 0, 786445, 20, 0, 851981, 20, 0, 851988, 9, 0, 917516, 16, 0, 917517, 20, 0, 917522, 15, 0, 917524, 26, 0 )
+
+[node name="Player" parent="." index="3"]
+position = Vector2( 96, 468 )
+
+[node name="HUD" parent="." index="4"]
+_level_time = 60.0
+
+[node name="Walls" parent="." index="5"]
+tile_data = PoolIntArray( 0, 2, 0, 1, 2, 196609, 2, 2, 196609, 3, 2, 196609, 4, 2, 196609, 5, 2, 196609, 6, 2, 196609, 7, 2, 196609, 8, 2, 196609, 9, 2, 196609, 10, 2, 196609, 11, 2, 196609, 12, 2, 196609, 13, 2, 196609, 14, 2, 196609, 15, 2, 196609, 16, 2, 196609, 17, 2, 196609, 18, 2, 196609, 19, 2, 196609, 20, 2, 196609, 21, 2, 196609, 22, 2, 2, 65536, 2, 65539, 65558, 2, 65539, 131072, 2, 65539, 131094, 2, 65539, 196608, 2, 65539, 196630, 2, 65539, 262144, 2, 65539, 262149, 2, 0, 262150, 2, 196609, 262151, 2, 196609, 262152, 2, 196609, 262153, 2, 196609, 262154, 2, 196609, 262155, 2, 196609, 262156, 2, 196609, 262157, 2, 196609, 262158, 2, 2, 262162, 2, 3, 262166, 2, 65539, 327680, 2, 65539, 327685, 2, 65539, 327694, 2, 65539, 327698, 2, 65539, 327702, 2, 65539, 393216, 2, 65539, 393221, 2, 65539, 393230, 2, 65539, 393234, 2, 65539, 393238, 2, 65539, 458752, 2, 65539, 458757, 2, 65539, 458766, 2, 65539, 458770, 2, 65539, 458774, 2, 65539, 524288, 2, 65539, 524293, 2, 65539, 524297, 2, 0, 524298, 2, 2, 524302, 2, 65539, 524306, 2, 65539, 524310, 2, 65539, 589824, 2, 65539, 589829, 2, 65539, 589833, 2, 65536, 589834, 2, 65538, 589838, 2, 65539, 589842, 2, 65539, 589846, 2, 65539, 655360, 2, 65539, 655365, 2, 65539, 655369, 2, 65536, 655370, 2, 65538, 655374, 2, 131072, 655375, 2, 196609, 655376, 2, 196609, 655377, 2, 196609, 655378, 2, 131074, 655382, 2, 65539, 720896, 2, 65539, 720901, 2, 65539, 720905, 2, 65536, 720906, 2, 65538, 720918, 2, 65539, 786432, 2, 65539, 786437, 2, 65539, 786441, 2, 65536, 786442, 2, 65538, 786454, 2, 65539, 851968, 2, 65539, 851973, 2, 65539, 851977, 2, 65536, 851978, 2, 65538, 851990, 2, 65539, 917504, 2, 65539, 917509, 2, 65539, 917513, 2, 65536, 917514, 2, 65538, 917526, 2, 65539, 983040, 2, 131072, 983041, 2, 196609, 983042, 2, 196609, 983043, 2, 196609, 983044, 2, 196609, 983045, 2, 131073, 983046, 2, 196609, 983047, 2, 196609, 983048, 2, 196609, 983049, 2, 131073, 983050, 2, 131073, 983051, 2, 196609, 983052, 2, 196609, 983053, 2, 196609, 983054, 2, 196609, 983055, 2, 196609, 983056, 2, 196609, 983057, 2, 196609, 983058, 2, 196609, 983059, 2, 196609, 983060, 2, 196609, 983061, 2, 196609, 983062, 2, 131074 )
+
+[node name="Crawler" parent="Enemies" index="0" instance=ExtResource( 15 )]
+position = Vector2( 240, 464 )
+
+[node name="Crawler2" parent="Enemies" index="1" instance=ExtResource( 15 )]
+position = Vector2( 320, 240 )
+
+[node name="Crawler3" parent="Enemies" index="2" instance=ExtResource( 15 )]
+position = Vector2( 528, 464 )
+
+[node name="Crawler4" parent="Enemies" index="3" instance=ExtResource( 15 )]
+position = Vector2( 256, 112 )
+
+[node name="Crawler5" parent="Enemies" index="4" instance=ExtResource( 15 )]
+position = Vector2( 592, 112 )
+
+[node name="FlyerPath" parent="Enemies" index="5" instance=ExtResource( 16 )]
+position = Vector2( 240, 344 )
+curve = SubResource( 10 )
+
+[node name="FlyerPath2" parent="Enemies" index="6" instance=ExtResource( 16 )]
+position = Vector2( 400, 346 )
+curve = SubResource( 10 )
+
+[node name="TutorialTexts" type="Control" parent="." index="11"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 17 )
+
+[node name="Move" type="RichTextLabel" parent="TutorialTexts" index="0"]
+margin_left = 40.0
+margin_top = 368.0
+margin_right = 152.0
+margin_bottom = 436.0
+theme = ExtResource( 14 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Use [color=#fe8019]WASD[/color] to move and[color=#fe8019]SPACE[/color] [/center]to jump"
+text = "Use WASD to move andSPACE to jump"
+fit_content_height = true
+scroll_active = false
+
+[node name="ShootTrigger" type="Area2D" parent="TutorialTexts" index="1"]
+position = Vector2( 32, 224 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialTexts/ShootTrigger" index="0"]
+shape = SubResource( 11 )
+
+[node name="Shoot" type="RichTextLabel" parent="TutorialTexts" index="2"]
+margin_left = 40.0
+margin_top = 48.0
+margin_right = 208.0
+margin_bottom = 133.0
+theme = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 7 )
+bbcode_enabled = true
+bbcode_text = "[center]Press [color=#fe8019]left-click[/color] to shoot. [color=#fe8019]Hold[/color] it to increase the impulse[/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "Press left-click to shoot. Hold it to increase the impulse"
+fit_content_height = true
+scroll_active = false
+
+[node name="BulletTrigger" type="Area2D" parent="TutorialTexts" index="3"]
+position = Vector2( 152, 80 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialTexts/BulletTrigger" index="0"]
+position = Vector2( 40, 0 )
+shape = SubResource( 12 )
+
+[node name="Bullet" type="RichTextLabel" parent="TutorialTexts" index="4"]
+margin_left = 288.0
+margin_top = 48.0
+margin_right = 456.0
+margin_bottom = 133.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[center]You only have [color=#cc241d]one[/color] bullet. [color=#cc241d]Kill[/color] enemies to get it back[/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "You only have one bullet. Kill enemies to get it back"
+fit_content_height = true
+scroll_active = false
+
+[node name="DashTrigger" type="Area2D" parent="TutorialTexts" index="5"]
+position = Vector2( 376, 80 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialTexts/DashTrigger" index="0"]
+position = Vector2( 40, 0 )
+shape = SubResource( 12 )
+
+[node name="Dash" type="RichTextLabel" parent="TutorialTexts" index="6"]
+margin_left = 529.0
+margin_top = 48.0
+margin_right = 697.0
+margin_bottom = 133.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[center]Press [color=#fe8019]right-click[/color] to dash. You can also [color=#cc241d]kill[/color] enemies with it[/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "Press right-click to dash. You can also kill enemies with it"
+fit_content_height = true
+scroll_active = false
+
+[node name="WinTrigger" type="Area2D" parent="TutorialTexts" index="7"]
+position = Vector2( 568, 296 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialTexts/WinTrigger" index="0"]
+position = Vector2( 40, 0 )
+shape = SubResource( 13 )
+
+[node name="Win" type="RichTextLabel" parent="TutorialTexts" index="8"]
+margin_left = 448.0
+margin_top = 384.0
+margin_right = 616.0
+margin_bottom = 469.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#cc241d]Kill[/color] all enemies before you run out of time to [color=#fe8019]win[/color][/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "Kill all enemies before you run out of time to win"
+fit_content_height = true
+scroll_active = false
+
+[node name="AirTrigger" type="Area2D" parent="TutorialTexts" index="9"]
+position = Vector2( 568, 296 )
+collision_layer = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialTexts/AirTrigger" index="0"]
+position = Vector2( -120, 120 )
+shape = SubResource( 14 )
+
+[node name="Air" type="RichTextLabel" parent="TutorialTexts" index="10"]
+margin_left = 208.0
+margin_top = 168.0
+margin_right = 440.0
+margin_bottom = 216.0
+theme = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 9 )
+bbcode_enabled = true
+bbcode_text = "[center][color=#cc241d]Kill[/color] enemies mid air to receive an [color=#fabd2f]air-jump[/color][/center]"
+visible_characters = 0
+percent_visible = 0.0
+text = "Kill enemies mid air to receive an air-jump"
+fit_content_height = true
+scroll_active = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialTexts" index="11"]
+anims/RESET = SubResource( 15 )
+anims/t1 = SubResource( 16 )
+anims/t2 = SubResource( 17 )
+anims/t3 = SubResource( 20 )
+anims/t4 = SubResource( 18 )
+anims/t5 = SubResource( 19 )
+
+[connection signal="body_entered" from="TutorialTexts/ShootTrigger" to="TutorialTexts" method="_on_ShootTrigger_body_entered"]
+[connection signal="body_entered" from="TutorialTexts/BulletTrigger" to="TutorialTexts" method="_on_BulletTrigger_body_entered"]
+[connection signal="body_entered" from="TutorialTexts/DashTrigger" to="TutorialTexts" method="_on_DashTrigger_body_entered"]
+[connection signal="body_entered" from="TutorialTexts/WinTrigger" to="TutorialTexts" method="_on_WinTrigger_body_entered"]
+[connection signal="body_entered" from="TutorialTexts/AirTrigger" to="TutorialTexts" method="_on_AirTrigger_body_entered"]

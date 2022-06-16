@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=64]
+code = "//---CRT Shader---
+shader_type canvas_item;
+
+void fragment()
+{	
+	float PI = 3.14159;
+	
+	//You can modify the *3.0, *-3.0 for a bigger or smaller 
+	float r = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*0.0), 0.0).r;
+	float g = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*1.5), 0.0).g;
+	float b = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(SCREEN_PIXEL_SIZE.x*-1.5), 0.0).b;
+	
+	COLOR = vec4(r, g, b, 1.0);
+}
+"
+
+[resource]
+shader = SubResource( 64 )
