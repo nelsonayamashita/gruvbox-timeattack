@@ -1630,6 +1630,7 @@ glow_blend_mode = 0
 script = ExtResource( 4 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 192, 24 )
 offset = Vector2( 368, 288 )
 current = true
 script = ExtResource( 5 )

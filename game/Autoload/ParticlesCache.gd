@@ -27,6 +27,7 @@ func _physics_process(_delta):
 		set_physics_process(false)
 		loaded = true
 	if loaded:
+		return
 		GlobalInfo.change_title_screen()
 	frames += 1
 	

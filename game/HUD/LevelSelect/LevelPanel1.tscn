@@ -51,7 +51,7 @@ margin_right = 282.0
 margin_bottom = 70.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 5
-columns = 4
+columns = 5
 
 [node name="Level000" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -60,7 +60,14 @@ margin_right = 113.0
 margin_bottom = 132.0
 level = 0
 
+[node name="Label" parent="Level000" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level000" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level000" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 44 )
 texture_pressed = ExtResource( 42 )
 texture_hover = ExtResource( 43 )
@@ -81,7 +88,14 @@ margin_right = 349.0
 margin_bottom = 132.0
 level = 2
 
+[node name="Label" parent="Level002" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level002" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level002" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 4 )
@@ -95,7 +109,14 @@ margin_right = 467.0
 margin_bottom = 132.0
 level = 3
 
+[node name="Label" parent="Level003" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level003" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level003" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 9 )
@@ -104,12 +125,19 @@ texture_disabled = ExtResource( 5 )
 [node name="Level004" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 137.0
-margin_right = 113.0
-margin_bottom = 269.0
+margin_left = 472.0
+margin_right = 585.0
+margin_bottom = 132.0
 level = 4
 
+[node name="Label" parent="Level004" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level004" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level004" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 14 )
 texture_hover = ExtResource( 16 )
@@ -118,13 +146,19 @@ texture_disabled = ExtResource( 13 )
 [node name="Level005" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 118.0
 margin_top = 137.0
-margin_right = 231.0
+margin_right = 113.0
 margin_bottom = 269.0
 level = 5
 
+[node name="Label" parent="Level005" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level005" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level005" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 17 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 6 )
@@ -133,13 +167,20 @@ texture_disabled = ExtResource( 15 )
 [node name="Level006" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 236.0
+margin_left = 118.0
 margin_top = 137.0
-margin_right = 349.0
+margin_right = 231.0
 margin_bottom = 269.0
 level = 6
 
+[node name="Label" parent="Level006" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level006" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level006" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 35 )
 texture_hover = ExtResource( 21 )
@@ -148,13 +189,20 @@ texture_disabled = ExtResource( 24 )
 [node name="Level007" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 354.0
+margin_left = 236.0
 margin_top = 137.0
-margin_right = 467.0
+margin_right = 349.0
 margin_bottom = 269.0
 level = 7
 
+[node name="Label" parent="Level007" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level007" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level007" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 38 )
 texture_pressed = ExtResource( 25 )
 texture_hover = ExtResource( 22 )
@@ -163,12 +211,20 @@ texture_disabled = ExtResource( 32 )
 [node name="Level008" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 274.0
-margin_right = 113.0
-margin_bottom = 406.0
+margin_left = 354.0
+margin_top = 137.0
+margin_right = 467.0
+margin_bottom = 269.0
 level = 8
 
+[node name="Label" parent="Level008" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level008" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level008" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 33 )
 texture_pressed = ExtResource( 37 )
 texture_hover = ExtResource( 39 )
@@ -177,13 +233,20 @@ texture_disabled = ExtResource( 29 )
 [node name="Level009" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 118.0
-margin_top = 274.0
-margin_right = 231.0
-margin_bottom = 406.0
+margin_left = 472.0
+margin_top = 137.0
+margin_right = 585.0
+margin_bottom = 269.0
 level = 9
 
+[node name="Label" parent="Level009" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level009" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level009" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 26 )
 texture_pressed = ExtResource( 40 )
 texture_hover = ExtResource( 23 )
@@ -192,13 +255,19 @@ texture_disabled = ExtResource( 28 )
 [node name="Level010" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 236.0
 margin_top = 274.0
-margin_right = 349.0
+margin_right = 113.0
 margin_bottom = 406.0
 level = 10
 
+[node name="Label" parent="Level010" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level010" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level010" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 30 )
 texture_pressed = ExtResource( 31 )
 texture_hover = ExtResource( 27 )
@@ -207,13 +276,20 @@ texture_disabled = ExtResource( 19 )
 [node name="Level011" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 354.0
+margin_left = 118.0
 margin_top = 274.0
-margin_right = 467.0
+margin_right = 231.0
 margin_bottom = 406.0
 level = 11
 
+[node name="Label" parent="Level011" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level011" index="1"]
+margin_right = 113.0
+
 [node name="TextureButton" parent="Level011" index="2"]
+margin_right = 113.0
 texture_normal = ExtResource( 41 )
 texture_pressed = ExtResource( 36 )
 texture_hover = ExtResource( 20 )

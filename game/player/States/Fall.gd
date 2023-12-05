@@ -5,6 +5,8 @@ onready var _coyote_timer := $CoyoteTimer
 
 func enter(_msg := {}) -> void:
 	player.anim.play("Fall")
+	player.step_area.set_deferred("monitoring", true)
+	player.step_area.set_deferred("monitorable", true)
 	if "coyote" in _msg:
 		_coyote_timer.start()
 
@@ -54,4 +56,6 @@ func physics_update(_delta: float) -> void:
 
 
 func exit() -> void:
+	player.step_area.set_deferred("monitoring", false)
+	player.step_area.set_deferred("monitorable", false)
 	_coyote_timer.stop()

@@ -39,6 +39,7 @@ onready var cantdo_sfx: AudioStreamPlayer = $CantdoSFX
 
 onready var dash_cooldown: Timer = $DashCooldown
 onready var dash_hitbox: Area2D = $DashArea
+onready var step_area = $StepArea
 onready var hitbox: Area2D = $Hitbox
 onready var state_machine: StateMachine = $StateMachine
 
@@ -116,3 +117,7 @@ func _on_DashCooldown_timeout() -> void:
 func _on_Hitbox_area_entered(_area: Area2D) -> void:
 	Events.emit_signal("shake_event_occured", 0.3)
 	emit_signal("died")
+
+
+func _on_StepArea_area_entered(area):
+	state_machine.transition_to("Jump", {"launch" : true, "weaker": true})

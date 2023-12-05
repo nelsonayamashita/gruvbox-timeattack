@@ -2,7 +2,10 @@ extends PlayerState
 
 
 func enter(_msg := {}) -> void:
-	player.velocity.y = -player.jump_speed
+	var scalar := 1.0
+	if "weaker" in _msg:
+		scalar = 1.2
+	player.velocity.y = -player.jump_speed/scalar
 	player.anim.play("Jump")
 	if "soft_launch" in _msg:
 		player.anim_fx.play("Launch_side")

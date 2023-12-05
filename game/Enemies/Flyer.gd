@@ -6,7 +6,8 @@ export (PackedScene) var explosion
 onready var _path_follow: PathFollow2D = get_parent()
 
 func _physics_process(delta: float) -> void:
-	_path_follow.offset = _path_follow.offset + speed * delta
+	if _path_follow.offset:
+		_path_follow.offset = _path_follow.offset + speed * delta
 
 
 func _on_Flyer_area_entered(area: Area2D) -> void:

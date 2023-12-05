@@ -16,6 +16,15 @@ margin_right = 113.0
 margin_bottom = 132.0
 level = 24
 
+[node name="Label" parent="Level024" index="0"]
+margin_right = 113.0
+
+[node name="TimerLabel" parent="Level024" index="1"]
+margin_right = 113.0
+
+[node name="TextureButton" parent="Level024" index="2"]
+margin_right = 113.0
+
 [node name="Level025" parent="." instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0

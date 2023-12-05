@@ -3,9 +3,11 @@ extends Control
 var move_text_shown := false
 var shoot_text_shown := false
 var bullet_text_shown := false
+var stomp_text_shown := false
 var dash_text_shown := false
 var win_text_shown := false
 var air_text_shown := false
+var dash_kill_text_shown := false
 
 onready var anim_player: AnimationPlayer = $AnimationPlayer
 
@@ -36,3 +38,15 @@ func _on_AirTrigger_body_entered(body: Node) -> void:
 	if not air_text_shown:
 		air_text_shown = true
 		anim_player.play("t5")
+
+
+func _on_StompTrigger_body_entered(body):
+	if not stomp_text_shown:
+		stomp_text_shown = true
+		anim_player.play("t6")
+
+
+func _on_DashKillTrigger2_body_entered(body):
+	if not dash_kill_text_shown:
+		dash_kill_text_shown = true
+		anim_player.play("t7")

@@ -488,12 +488,12 @@ script = ExtResource( 8 )
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 20.0
 margin_top = 20.0
-margin_right = 716.0
-margin_bottom = 556.0
+margin_right = 1108.0
+margin_bottom = 595.0
 custom_constants/separation = 40
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-margin_right = 696.0
+margin_right = 1088.0
 margin_bottom = 32.0
 custom_colors/font_color_shadow = Color( 0.839216, 0.364706, 0.054902, 1 )
 custom_constants/shadow_offset_x = 4
@@ -505,18 +505,18 @@ valign = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 72.0
-margin_right = 696.0
-margin_bottom = 536.0
+margin_right = 1088.0
+margin_bottom = 575.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_right = 110.0
-margin_bottom = 464.0
+margin_right = 248.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 
 [node name="Backbutton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer"]
-margin_right = 110.0
-margin_bottom = 464.0
+margin_right = 248.0
+margin_bottom = 503.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
@@ -526,10 +526,10 @@ stretch_mode = 5
 flip_h = true
 
 [node name="Clip" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 114.0
-margin_right = 581.0
-margin_bottom = 464.0
-rect_min_size = Vector2( 467, 0 )
+margin_left = 252.0
+margin_right = 836.0
+margin_bottom = 503.0
+rect_min_size = Vector2( 584, 0 )
 rect_clip_content = true
 script = ExtResource( 11 )
 
@@ -539,26 +539,26 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 
 [node name="LevelPanel1" parent="VBoxContainer/HBoxContainer/Clip/Gridbox" instance=ExtResource( 5 )]
-margin_right = 467.0
-margin_bottom = 464.0
+margin_right = 585.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LevelPanel2" parent="VBoxContainer/HBoxContainer/Clip/Gridbox" instance=ExtResource( 9 )]
-margin_left = 467.0
-margin_right = 934.0
-margin_bottom = 464.0
+margin_left = 585.0
+margin_right = 1170.0
+margin_bottom = 503.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-margin_left = 585.0
-margin_right = 696.0
-margin_bottom = 464.0
+margin_left = 840.0
+margin_right = 1088.0
+margin_bottom = 503.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="NextButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
-margin_right = 111.0
-margin_bottom = 464.0
+margin_right = 248.0
+margin_bottom = 503.0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 1 )
 texture_hover = ExtResource( 3 )
