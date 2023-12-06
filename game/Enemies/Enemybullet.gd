@@ -21,4 +21,11 @@ func _on_Enemybullet_body_entered(body: Node) -> void:
 	Projectiles.add_child(explosion)
 	explosion.global_position = global_position
 	queue_free()
+
+
+func _on_Enemybullet_area_entered(area):
+	var explosion = explosion_particle.instance()
+	explosion.rotation = rotation
+	Projectiles.add_child(explosion)
+	explosion.global_position = global_position
 	queue_free()

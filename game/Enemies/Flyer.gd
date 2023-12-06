@@ -6,7 +6,7 @@ export (PackedScene) var explosion
 onready var _path_follow: PathFollow2D = get_parent()
 
 func _physics_process(delta: float) -> void:
-	if _path_follow.offset:
+	if not is_nan(_path_follow.offset):
 		_path_follow.offset = _path_follow.offset + speed * delta
 
 

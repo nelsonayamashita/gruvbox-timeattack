@@ -16,7 +16,7 @@ extents = Vector2( 6, 6.5 )
 
 [node name="Enemybullet" type="Area2D"]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 10
 priority = 17.0
 script = ExtResource( 2 )
 _speed = 80.0
@@ -41,4 +41,5 @@ texture = ExtResource( 1 )
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
 
+[connection signal="area_entered" from="." to="." method="_on_Enemybullet_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_Enemybullet_body_entered"]
