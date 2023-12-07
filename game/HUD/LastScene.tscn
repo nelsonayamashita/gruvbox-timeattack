@@ -852,7 +852,7 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 19/z_index = 0
 
 [sub_resource type="DynamicFont" id=117]
-size = 20
+size = 26
 font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=132]
@@ -939,17 +939,16 @@ theme = ExtResource( 5 )
 script = ExtResource( 6 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 356, 242 )
+position = Vector2( 576, 242 )
 scale = Vector2( 18, 18 )
 texture = SubResource( 140 )
 hframes = 4
 vframes = 5
+frame = 14
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 80 )
 
 [node name="Walls" type="TileMap" parent="."]
-modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 12, 12 )
 tile_set = SubResource( 105 )
 cell_size = Vector2( 16, 16 )
@@ -957,7 +956,7 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 collision_layer = 8
 collision_mask = 0
 format = 1
-tile_data = PoolIntArray( 196607, 2, 196608, 131072, 2, 196609, 131073, 2, 196609, 131074, 2, 196609, 131075, 2, 196610 )
+tile_data = PoolIntArray( 196607, 2, 196608, 131072, 2, 196609, 131073, 2, 196609, 131074, 2, 196609, 131075, 2, 196609, 131076, 2, 196609, 131077, 2, 196609, 131078, 2, 196610 )
 __meta__ = {
 "_edit_lock_": true
 }
